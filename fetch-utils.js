@@ -38,6 +38,29 @@ export async function logout() {
     return window.location.href = '/';
 }
 
+export async function fetchCity() {
+    const response = await client
+        .from('cities')
+        .select()
+        .single();
+    
+    return checkError(response);
+}
+
+export async function createDefaultCity() {
+    const response = await client
+        .from('cities')
+        .insert([{
+            name: 'Nullville',
+            water_type: Math.ceil(Math.random() * 3),
+            density_type: Math.ceil(Math.random() * 3),
+            park_type: Math.ceil(Math.random() * 3),
+            mottos: []
+        }]);
+    
+    return checkError(response);
+}
+
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }

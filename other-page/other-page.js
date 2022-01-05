@@ -1,4 +1,4 @@
-import { checkAuth, logout } from '../fetch-utils.js';
+import { checkAuth, createDefaultCity, fetchCity, logout } from '../fetch-utils.js';
 
 checkAuth();
 
@@ -15,18 +15,18 @@ const mottoInput = document.querySelector('#motto-input');
 const addMottoButton = document.querySelector('#add-motto');
 const setNameButton = document.querySelector('#set-name');
 
-console.log(logoutButton,
-    cityNameEl,
-    waterImgEl,
-    densityImgEl,
-    parkImgEl,
-    waterDropdown,
-    densityDropdown,
-    parkDropdown,
-    mottoContainerEl,
-    mottoInput,
-    addMottoButton,
-    setNameButton)
+let city = {};
+
 logoutButton.addEventListener('click', () => {
     logout();
+});
+
+window.addEventListener('load', async() => {
+    // On page load attempt to fetch city from supabase
+    city = await fetchCity();
+    // Check if fetch was successful and if not, create row in supabase with defaults
+    if (!city) {
+        city = await createDefaultCity();
+    }
+    console.log(city);
 });
