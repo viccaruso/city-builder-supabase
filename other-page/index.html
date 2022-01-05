@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/home.css">
-    <title>Document</title>
+    <title>City Builder (Supabase)</title>
 </head>
 
 <body>
@@ -18,10 +18,61 @@
         <div class="gutter-right logo">
             <img src="../assets/big-logo.png" />
         </div>
-    </header>    
+    </header>
     <button id="logout">Logout</button>
     <main>
-        <h1>You are logged in!</h1>
+        <section id="city-greeting">
+            <h1>Welcome to <span id="city-name"></span></h1>
+            <label>
+                Name your city:
+                <input id="city-input" />
+                <button id="set-name">Set Name</button>
+            </label>
+        </section>
+        <section id="city-details">
+            <div id="city-images">
+                <img src='' id="water-image" />
+                <img src='' id="density-image" />
+                <img src='' id="park-image" />
+            </div>
+            <div id="dropdowns">
+                <label>
+                    Water Feature: 
+                    <select id="water-dropdown">
+                        <option value="1">Canals</option>
+                        <option value="2">Fjords</option>
+                        <option value="3">Ocean</option>
+                    </select>
+                </label>
+                <label>
+                    Building Density: 
+                    <select id="density-dropdown">
+                        <option value="1">Metropolis</option>
+                        <option value="2">Town</option>
+                        <option value="3">Megalopolis</option>
+                    </select>
+                </label>
+                <label>
+                    Park Type: 
+                    <select id="park-dropdown">
+                        <option value="1">Woods</option>
+                        <option value="2">Skate</option>
+                        <option value="3">Grassy</option>
+                    </select>
+                </label>
+            </div>
+        </section>
+        <section id="city-mottos">
+            <h1>City Mottos:</h1>
+            <div id="motto-container"></div>
+            <label>
+                Enter a new motto:
+                <input id="motto-input" />
+                <button id="add-motto">Add Motto</button>
+            </label>
+        </section>
+
+
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
