@@ -1,9 +1,10 @@
-import { checkAuth, createDefaultCity, fetchCity, logout } from '../fetch-utils.js';
+import { checkAuth, createDefaultCity, fetchCity, logout, updateCityDetail } from '../fetch-utils.js';
 
 checkAuth();
 
 const logoutButton = document.getElementById('logout');
 const cityNameEl = document.querySelector('#city-name');
+const cityInputEl = document.querySelector('#city-input');
 const waterImgEl = document.querySelector('#water-image');
 const densityImgEl = document.querySelector('#density-image');
 const parkImgEl = document.querySelector('#park-image');
@@ -30,6 +31,17 @@ window.addEventListener('load', async() => {
         city = await createDefaultCity();
     }
 
+    // Display fresh data
+    displayCity(city);
+});
+
+setNameButton.addEventListener('click', async() => {
+    // Grab the name from input field and then clear field
+    let name = cityInputEl.value;
+    cityInputEl.value = '';
+    // Update detail in db and update state
+    city = await updateCityDetail('name', name);
+    // Display fresh data (from state)
     displayCity(city);
 });
 

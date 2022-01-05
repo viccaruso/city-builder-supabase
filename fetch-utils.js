@@ -62,6 +62,15 @@ export async function createDefaultCity() {
     return checkError(response);
 }
 
+export async function updateCityDetail(key, value) {
+    const response = await client
+        .from('cities')
+        .update({ [key]: value })
+        .single();
+    
+    return checkError(response);
+}
+
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
