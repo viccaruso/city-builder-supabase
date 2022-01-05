@@ -22,7 +22,7 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', async() => {
     // On page load attempt to fetch city from supabase
     city = await fetchCity();
 
@@ -35,7 +35,7 @@ window.addEventListener('load', async () => {
     displayCity(city);
 });
 
-setNameButton.addEventListener('click', async () => {
+setNameButton.addEventListener('click', async() => {
     // Grab the name from input field and then clear field
     let data = cityInputEl.value;
     cityInputEl.value = '';
