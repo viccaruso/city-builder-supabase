@@ -24,28 +24,30 @@ logoutButton.addEventListener('click', () => {
 window.addEventListener('load', async() => {
     // On page load attempt to fetch city from supabase
     city = await fetchCity();
+    
     // Check if fetch was successful and if not, create row in supabase with default values and store the returned default city in state
     if (!city) {
         city = await createDefaultCity();
     }
-    console.log(city);
+
     displayCity(city);
 });
 
 function displayCity(city) {
-    // Set city name
+    // Display details on DOM from state
+    // Display city name
     cityNameEl.textContent = city.name;
 
-    // Set image sources
+    // Display image sources
     waterImgEl.src = `../assets/water-${city.water_type}.jpeg`;
     densityImgEl.src = `../assets/density-${city.density_type}.jpeg`;
     parkImgEl.src = `../assets/park-${city.park_type}.jpeg`;
 
-    // Set dropdown values
+    // Display dropdown values
     waterDropdown.value = city.water_type;
     densityDropdown.value = city.density_type;
     parkDropdown.value = city.park_type;
 
-    // Set mottos
+    // Display mottos
 
 }

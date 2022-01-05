@@ -56,7 +56,8 @@ export async function createDefaultCity() {
             density_type: Math.ceil(Math.random() * 3),
             park_type: Math.ceil(Math.random() * 3),
             mottos: []
-        }]);
+        }])
+        .single();
     
     return checkError(response);
 }
